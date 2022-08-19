@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MVISampleProject</string>
+    <string name="fetch_user">Fetch User</string>
 </resources>
