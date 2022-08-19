@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
 
     // Initialize variables
     var binding: ActivityMainBinding? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,7 +70,10 @@ class MainActivity : AppCompatActivity() {
         val viewModelFactory = ViewModelFactory(ApiHelperImpl(
             RetrofitBuilder.apiService
         ))
-        mainViewModel= ViewModelProviders.of(this,viewModelFactory).get(MainViewModel::class.java)
+
+
+        mainViewModel= ViewModelProvider(this,viewModelFactory)[MainViewModel::class.java]
+        //mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
        /* mainViewModel = ViewModelProvider.(
             this,
